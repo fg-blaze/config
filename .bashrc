@@ -125,7 +125,6 @@ function add_reviewers () {
     cmd="gerrit set-reviewers ${reviewers_str} ${CHANGE_ID:-$LAST_CHANGE_ID}";
     echo ssh ${host} \"${cmd}\";
     ssh ${host} "gerrit set-reviewers ${reviewers_str} ${CHANGE_ID:-$LAST_CHANGE_ID}";
-    #ssh -p 29418 vshypyguzov@review.openstack.org "gerrit set-reviewers ${reviewers_str} ${CHANGE_ID:-$LAST_CHANGE_ID}"; 
 }
 
 function check_pep8 () {
