@@ -1,3 +1,3 @@
-docker inspect OLD_NODE --format "{{json .Spec.Labels}}" > Contents.json && jq -r ".|keys[]" Contents.json | while read key ;
-do echo docker node update  --label-add $key="$(jq ".[\"$key\"]" Contents.json) NEW_NODE_NAME";
+LABELS=$(docker inspect OLD_NODE --format "{{json .Spec.Labels}}") && jq -r ".|keys[]" <<< $LABELS | while read key;
+do echo docker node update  --label-add $key="$(jq ".[\"$key\"]" <<< $LABELS) NEW_NODE";
 done
